@@ -1,0 +1,48 @@
+Public Class Produkt
+
+
+    Private _pris As Integer
+    Private _längd As Integer
+    Private _product As String
+
+#Region "Properties"
+    Public Property Pris As Integer
+        Get
+            Return _pris
+        End Get
+        Set(value As Integer)
+            _pris = value
+        End Set
+    End Property
+
+    Public Property Längd As Integer
+        Get
+            Return _längd
+        End Get
+        Set(value As Integer)
+            _längd = value
+        End Set
+    End Property
+
+    Public Property Product As String
+        Get
+            Return _product
+        End Get
+        Set(value As String)
+            _product = value
+        End Set
+    End Property
+#End Region
+
+    Public Overrides Function ToString() As String
+        Return "Pris: " & Pris & "   Längd: " & Längd &
+            "produkt:" & Product
+
+    End Function
+
+
+
+
+
+
+End Class
