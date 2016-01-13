@@ -1,0 +1,72 @@
+Public Class Form1
+    Private myProdukt As Produkt
+    Dim _produkterList As List(Of Produkt)
+
+    'variablar för test
+    Dim price As Integer = 22
+    Dim längd As Integer = 2
+    Dim product As String = "2x2"
+
+    Public Sub New()
+
+        ' This call is required by the designer.
+        InitializeComponent()
+
+
+        ' Add any initialization after the InitializeComponent() call.
+        lstBoxProdukter.SelectionMode = SelectionMode.MultiSimple
+        _produkterList = New List(Of Produkt)
+       
+    End Sub
+
+    Sub main()
+
+
+
+    End Sub
+
+    Sub AddToProList()
+        _produkterList.Add(New Produkt With {.Pris = CInt(txtPris.Text), .Längd = CInt(txtAntal.Text),
+.Product = txtProdukt.Text})
+
+        updtVaroList()
+
+        'produkterList = det som ska vara listan i WBF
+    End Sub
+    Sub updtVaroList()
+
+        Dim str As String = String.Empty
+        lstProdukter.Clear()
+
+        For Each line In _produkterList
+            str &= line.ToString & Environment.NewLine
+
+        Next
+
+
+        lstProdukter.Text = str
+        lstBoxProdukter.Items.Add(str)
+
+    End Sub
+
+#Region "Knappar"
+
+    Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
+        AddToProList()
+
+    End Sub
+
+
+    Private Sub btnDel_Click(sender As Object, e As EventArgs) Handles btnDel.Click
+        'Deletar alla selectade items ur Listviewen. Observera att objekten finns
+        'kvar i _produkterlist, tack ovre detta kan jag göra en ångraknapp som hämtar upp från
+        '_produkterlist
+
+        Do While (lstBoxProdukter.SelectedItems.Count > 0)
+            lstBoxProdukter.Items.Remove(lstBoxProdukter.SelectedItem)
+        Loop
+
+    End Sub
+
+#End Region
+End Class
