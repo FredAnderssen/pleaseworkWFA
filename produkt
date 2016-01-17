@@ -1,6 +1,5 @@
 Public Class Produkt
 
-
     Private _pris As Integer
     Private _längd As Integer
     Private _product As String
@@ -32,11 +31,20 @@ Public Class Produkt
             _product = value
         End Set
     End Property
+
+    Public Property Form1 As Form1
+        Get
+
+        End Get
+        Set(value As Form1)
+
+        End Set
+    End Property
 #End Region
 
     Public Overrides Function ToString() As String
         Return "Pris: " & Pris & "   Längd: " & Längd &
-            "produkt:" & Product
+            "produkt: " & Product
 
     End Function
 
@@ -46,3 +54,5 @@ Public Class Produkt
 
 
 End Class
+
+
