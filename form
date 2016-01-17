@@ -2,10 +2,8 @@ Public Class Form1
     Private myProdukt As Produkt
     Dim _produkterList As List(Of Produkt)
 
-    'variablar för test
-    Dim price As Integer = 22
-    Dim längd As Integer = 2
-    Dim product As String = "2x2"
+
+   
 
     Public Sub New()
 
@@ -19,19 +17,23 @@ Public Class Form1
        
     End Sub
 
-    Sub main()
-
-
-
-    End Sub
+    
 
     Sub AddToProList()
         _produkterList.Add(New Produkt With {.Pris = CInt(txtPris.Text), .Längd = CInt(txtAntal.Text),
-.Product = txtProdukt.Text})
-
+            .Product = txtProdukt.Text})
+        SortHighscoreList()
         updtVaroList()
 
         'produkterList = det som ska vara listan i WBF
+    End Sub
+    Private Sub SortHighscoreList()
+        ' sortera objektet HighscoreRow efter score
+        _produkterList.Sort(Function(x, y) x.Pris.CompareTo(y.Pris))
+        ' vänd på listan så att den blir i fallande ordning
+        _produkterList.Reverse()
+
+
     End Sub
     Sub updtVaroList()
 
@@ -40,9 +42,7 @@ Public Class Form1
 
         For Each line In _produkterList
             str &= line.ToString & Environment.NewLine
-
         Next
-
 
         lstProdukter.Text = str
         lstBoxProdukter.Items.Add(str)
@@ -68,5 +68,20 @@ Public Class Form1
 
     End Sub
 
+    Private Sub btnPay_Click(sender As Object, e As EventArgs) Handles btnPay.Click
+
+    End Sub
+
+
+
+
+
+
+
+
+
 #End Region
+
+   
+
 End Class
